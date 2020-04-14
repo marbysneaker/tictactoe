@@ -13,6 +13,7 @@ function render(){
     let o = 'O'
     let playerOne = []
     let playerTwo = []
+    let winner = null
     function checkForWin(){
         console.log(playerOne)
         console.log(playerTwo)
@@ -25,22 +26,21 @@ function render(){
         let win6 = ['box3','box6','box9']
         let win7 = ['box1','box5','box9']
         let win8 = ['box3','box5','box7']
+
         if(checker(playerOne, win1) || checker(playerOne, win2) || checker(playerOne, win3) || checker(playerOne, win4) || checker(playerOne, win5) || checker(playerOne, win6) || checker(playerOne, win7) || checker(playerOne, win8)){
             
             alert('player One is the winner')
+            winner = true;
+            location.reload();
+            return false;
         }
         if(checker(playerTwo, win1) || checker(playerTwo, win2) || checker(playerTwo, win3) || checker(playerOne, win4) || checker(playerTwo, win5) || checker(playerTwo, win6) || checker(playerTwo, win7) || checker(playerTwo, win8)){
             
             alert('player Two is the winner')
+            winner = true
+            location.reload();
+            return false;       
         }
-        if(checker(playerOne, win1) || checker(playerOne, win2) || checker(playerOne, win3) || checker(playerOne, win4) || checker(playerOne, win5) || checker(playerOne, win6) || checker(playerOne, win7) || checker(playerOne, win8)){
-            
-            alert('player One is the winner')
-        }
-
-
-        
-
     }
     function displayLetter(box){
         
@@ -53,6 +53,14 @@ function render(){
             playerOne.push(box)
             let newSet = boxes.filter(x => !clickedBoxes.includes(x));
             console.log(newSet)
+            checkForWin()
+            if (newSet.length == 0){
+                if (winner === null){
+                    alert('its a TIE')
+                    location.reload();
+
+                }
+            }
             let randomBox = newSet[Math.floor(Math.random()*newSet.length)];
             console.log(randomBox)
             clickedBoxes.push(randomBox)
@@ -62,6 +70,7 @@ function render(){
             oponentClicked.appendChild(opponentLetter)
             opponentLetter.textContent = o
             checkForWin()
+            
             
 
         }

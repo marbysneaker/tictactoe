@@ -41,7 +41,24 @@
 .box {
     width: 30%;
     height: 30%;
-    position: relative;
-    margin-top: 10px;
     background-color: var(--box--bg);
+    position: relative;
+    margin-top: 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    
 }
+.box span {
+ 
+   
+    font-size: 100px;
+    font-weight: 900;
+    background: url(https://media.giphy.com/media/XbsB79zhtQB9eUsBaU/giphy.gif);
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+    -webkit-background-clip: text;   
+}
+

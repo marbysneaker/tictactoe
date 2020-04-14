@@ -61,7 +61,7 @@
     color: transparent;
     -webkit-background-clip: text;   
 }
-@media (max-width: 768px) {
+@media only screen and (min-width: 360px) and (max-width: 767px)  {
     .main-body{
         grid-template-columns: 5px auto 5px;
     }

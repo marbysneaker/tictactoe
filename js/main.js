@@ -9,6 +9,8 @@ function render(){
         boxes.push(`box${number}`)
         console.log(number)
     }
+    let marzel = '../tictactoe/images/marzel1.png'
+    let lyla = '../tictactoe/images/lyla1.png'
     let x = 'X'
     let o = 'O'
     let playerOne = []
@@ -47,7 +49,12 @@ function render(){
         if (!clickedBoxes.includes(box)){
             let clicked = document.querySelector(`#${box}`)
             let letter = document.createElement('span')
-            clicked.appendChild(letter)
+            let img = document.createElement('img')
+            img.src = '../tictactoe/images/marzel1.png'
+            letter.appendChild(img)
+            clicked.appendChild(img)
+            
+            console.log(img)
             letter.textContent = x
             clickedBoxes.push(box)
             playerOne.push(box)

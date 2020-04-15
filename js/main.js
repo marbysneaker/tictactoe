@@ -16,6 +16,8 @@ function render(){
     let playerOne = []
     let playerTwo = []
     let winner = null
+    let iframe = "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Friane.garcia%2Fvideos%2F10223063509595636%2F&show_text=0&width=476"
+    // <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Friane.garcia%2Fvideos%2F10223063509595636%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
     let modal = document.querySelector(".modal")
     function checkForWin(){
         let newModal = document.createElement('div')
@@ -38,7 +40,13 @@ function render(){
             winner = 1;
             // location.reload();
             // return false;
+            let frame = document.createElement('iframe')
+            frame.src = iframe
+            frame.id = 'video'
+            var vid = document.getElementById("video");
+            vid.autoplay = true
             newModal.classList.add('player1')
+            newModal.appendChild(frame)
             newModal.addEventListener('click',function(event){
                 closeModal()
             })

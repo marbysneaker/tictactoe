@@ -36,18 +36,14 @@ function render(){
 
         if(checker(playerOne, win1) || checker(playerOne, win2) || checker(playerOne, win3) || checker(playerOne, win4) || checker(playerOne, win5) || checker(playerOne, win6) || checker(playerOne, win7) || checker(playerOne, win8)){
             
-            // alert('player One is the winner')
+            alert('player One is the winner')
             winner = 1;
             // location.reload();
             // return false;
-            let frame = document.createElement('iframe')
-            frame.src = iframe
-            frame.id = 'video'
-            var vid = document.getElementById("video");
-            vid.autoplay = true
-            newModal.classList.add('player1')
-            newModal.appendChild(frame)
-            newModal.addEventListener('click',function(event){
+            let frame = document.createElement('img')
+            frame.src = marzel
+            modal.appendChild(frame)
+            frame.addEventListener('click',function(event){
                 closeModal()
             })
         }

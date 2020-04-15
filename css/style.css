@@ -83,13 +83,12 @@
     64%  { transform: scale(1,1)      translateY(0); }
     100% { transform: scale(1,1)      translateY(0); }
 }
-.player1 {
+.modal img {
     position: absolute;
     width: 50vw;
     height: 50vh;
     right: 25vw;
     bottom: 25vh;
-    background-color: red;
 }
 /* .box span {
  

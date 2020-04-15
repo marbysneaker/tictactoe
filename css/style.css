@@ -23,6 +23,17 @@
     justify-content: center;
     align-items: center;
 }
+.main-header span {
+  
+    font-size: 100px;
+    font-weight: 900;
+    background: url(https://media.giphy.com/media/XbsB79zhtQB9eUsBaU/giphy.gif);
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+    -webkit-background-clip: text;   
+}
+
 .main-body{
     grid-row: 2;
     background-color: var(--main--body--bg);
@@ -51,8 +62,8 @@
     
 }
 .box img{
-    width: 80%;
-    height: 80%;
+    width: 60%;
+    height: 60%;
     animation: bounce 0.3s;
     animation-direction: alternate;
     animation-duration: 2s;

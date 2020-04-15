@@ -50,7 +50,7 @@ function render(){
             let clicked = document.querySelector(`#${box}`)
             let letter = document.createElement('span')
             let img = document.createElement('img')
-            img.src = '../tictactoe/images/marzel1.png'
+            img.src = marzel
             letter.appendChild(img)
             clicked.appendChild(img)
             
@@ -74,7 +74,9 @@ function render(){
             playerTwo.push(randomBox)
             let oponentClicked = document.querySelector(`#${randomBox}`)
             let opponentLetter = document.createElement('span')
-            oponentClicked.appendChild(opponentLetter)
+            let imgLyla = document.createElement('img')
+            imgLyla.src = lyla
+            oponentClicked.appendChild(imgLyla)
             opponentLetter.textContent = o
             checkForWin()
             

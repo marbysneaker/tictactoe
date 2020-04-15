@@ -25,7 +25,7 @@
 }
 .main-header span {
   
-    font-size: 100px;
+    font-size: 60px;
     font-weight: 900;
     background: url(https://media.giphy.com/media/l378wcSfS7eXWQgla/giphy.gif);
     background-size: cover;
@@ -63,7 +63,7 @@
 }
 .box img{
     width: 60%;
-    height: 60%;
+    height: 50%;
     animation: bounce 0.3s;
     animation-direction: alternate;
     animation-duration: 2s;

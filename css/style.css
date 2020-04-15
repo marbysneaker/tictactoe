@@ -11,7 +11,7 @@
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 100px auto;
+    grid-template-rows: 10vh 90vh;
 }
 .main-header{
     grid-row: 1;
@@ -83,7 +83,14 @@
     64%  { transform: scale(1,1)      translateY(0); }
     100% { transform: scale(1,1)      translateY(0); }
 }
-
+.player1 {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    right: 25vw;
+    bottom: 25vh;
+    background-color: red;
+}
 /* .box span {
  
    

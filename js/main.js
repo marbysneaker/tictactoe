@@ -16,7 +16,10 @@ function render(){
     let playerOne = []
     let playerTwo = []
     let winner = null
+    let modal = document.querySelector(".modal")
     function checkForWin(){
+        let newModal = document.createElement('div')
+        modal.appendChild(newModal)
         console.log(playerOne)
         console.log(playerTwo)
         let checker = (arr, target) => target.every(v => arr.includes(v));
@@ -31,15 +34,19 @@ function render(){
 
         if(checker(playerOne, win1) || checker(playerOne, win2) || checker(playerOne, win3) || checker(playerOne, win4) || checker(playerOne, win5) || checker(playerOne, win6) || checker(playerOne, win7) || checker(playerOne, win8)){
             
-            alert('player One is the winner')
-            winner = true;
-            location.reload();
-            return false;
+            // alert('player One is the winner')
+            winner = 1;
+            // location.reload();
+            // return false;
+            newModal.classList.add('player1')
+            newModal.addEventListener('click',function(event){
+                closeModal()
+            })
         }
         if(checker(playerTwo, win1) || checker(playerTwo, win2) || checker(playerTwo, win3) || checker(playerOne, win4) || checker(playerTwo, win5) || checker(playerTwo, win6) || checker(playerTwo, win7) || checker(playerTwo, win8)){
             
             alert('player Two is the winner')
-            winner = true
+            winner = 2
             location.reload();
             return false;       
         }
@@ -62,7 +69,7 @@ function render(){
             console.log(newSet)
             checkForWin()
             if (newSet.length == 0){
-                if (winner === null){
+                if (winner !== null){
                     alert('its a TIE')
                     location.reload();
 
@@ -98,6 +105,23 @@ function render(){
         })
 
     }
+    function closeModal(){
+        location.reload();
+        return false; 
+
+    }
+    
+    if (winner != null){
+        
+        if (winner === 1){
+            newModal.classList.add('player1')
+            newModal.addEventListener('click',function(event){
+                closeModal()
+            })
+        }
+        
+    }
+
 
 }
 render()

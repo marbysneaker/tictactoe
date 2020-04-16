@@ -40,6 +40,8 @@ function render(){
             winner = 1;
             let frame = document.createElement('img')
             frame.src = marzel
+            frame.classList.add('rainbow')
+            
             modal.appendChild(frame)
             frame.addEventListener('click',function(event){
                 closeModal()

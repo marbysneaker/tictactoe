@@ -36,10 +36,8 @@ function render(){
 
         if(checker(playerOne, win1) || checker(playerOne, win2) || checker(playerOne, win3) || checker(playerOne, win4) || checker(playerOne, win5) || checker(playerOne, win6) || checker(playerOne, win7) || checker(playerOne, win8)){
             
-            alert('player One is the winner')
+            
             winner = 1;
-            // location.reload();
-            // return false;
             let frame = document.createElement('img')
             frame.src = marzel
             modal.appendChild(frame)
@@ -115,16 +113,16 @@ function render(){
 
     }
     
-    if (winner != null){
+    // if (winner != null){
         
-        if (winner === 1){
-            newModal.classList.add('player1')
-            newModal.addEventListener('click',function(event){
-                closeModal()
-            })
-        }
+    //     if (winner === 1){
+    //         newModal.classList.add('player1')
+    //         newModal.addEventListener('click',function(event){
+    //             closeModal()
+    //         })
+    //     }
         
-    }
+    // }
 
 
 }

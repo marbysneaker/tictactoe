@@ -19,9 +19,10 @@ function render(){
     let iframe = "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Friane.garcia%2Fvideos%2F10223063509595636%2F&show_text=0&width=476"
     // <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Friane.garcia%2Fvideos%2F10223063509595636%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
     let modal = document.querySelector(".modal")
+    let modal1 = document.querySelector(".modal")
+    let modal2 = document.querySelector(".modal")
     function checkForWin(){
-        let newModal = document.createElement('div')
-        modal.appendChild(newModal)
+        
         console.log(playerOne)
         console.log(playerTwo)
         let checker = (arr, target) => target.every(v => arr.includes(v));
@@ -36,13 +37,24 @@ function render(){
 
         if(checker(playerOne, win1) || checker(playerOne, win2) || checker(playerOne, win3) || checker(playerOne, win4) || checker(playerOne, win5) || checker(playerOne, win6) || checker(playerOne, win7) || checker(playerOne, win8)){
             
-            
+            let newModal = document.createElement('div')
+            modal.appendChild(newModal)
             winner = 1;
             let frame = document.createElement('img')
             frame.src = marzel
             frame.classList.add('rainbow')
-            
             modal.appendChild(frame)
+            let snake = document.createElement('div')
+            snake.className = 'snake'
+            modal.appendChild(snake)
+            let snake1 = document.createElement('div')
+            snake1.className ='snake1'
+            snake1.style = 'animation-delay: 1.3s'
+            modal1.appendChild(snake1)
+            let snake2 = document.createElement('div')
+            snake2.className = 'snake2' 
+            snake2.style = 'animation-delay: 2.7s'  
+            modal2.appendChild(snake2)
             frame.addEventListener('click',function(event){
                 closeModal()
             })
@@ -56,6 +68,7 @@ function render(){
         }
     }
     function displayLetter(box){
+        checkForWin()
         
         if (!clickedBoxes.includes(box)){
             let clicked = document.querySelector(`#${box}`)
@@ -89,7 +102,7 @@ function render(){
             imgLyla.src = lyla
             oponentClicked.appendChild(imgLyla)
             opponentLetter.textContent = o
-            checkForWin()
+            
             
             
 
@@ -114,18 +127,5 @@ function render(){
         return false; 
 
     }
-    
-    // if (winner != null){
-        
-    //     if (winner === 1){
-    //         newModal.classList.add('player1')
-    //         newModal.addEventListener('click',function(event){
-    //             closeModal()
-    //         })
-    //     }
-        
-    // }
-
-
 }
 render()

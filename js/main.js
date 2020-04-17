@@ -47,10 +47,14 @@ function render(){
             modal.appendChild(frame)
             let snake = document.createElement('div')
             snake.className = 'snake'
+            let frame1 = document.createElement('img')
+            frame1.src = marzel
+            snake.appendChild(frame1)
             modal.appendChild(snake)
             let snake1 = document.createElement('div')
             snake1.className ='snake1'
             snake1.style = 'animation-delay: 1.3s'
+            snake1.appendChild(frame1)
             modal1.appendChild(snake1)
             let snake2 = document.createElement('div')
             snake2.className = 'snake2' 
@@ -70,7 +74,7 @@ function render(){
                 modal.appendChild(newModal)
                 winner = 1;
                 let frame = document.createElement('img')
-                frame.src = tie
+                frame.src = lyla
                 frame.classList.add('rainbow')
                 modal.appendChild(frame)
                 let snake = document.createElement('div')
@@ -81,6 +85,7 @@ function render(){
                 snake1.style = 'animation-delay: 1.3s'
                 modal1.appendChild(snake1)
                 let snake2 = document.createElement('div')
+                snake2.appendChild(frame)
                 snake2.className = 'snake2' 
                 snake2.style = 'animation-delay: 2.7s'  
                 modal2.appendChild(snake2)

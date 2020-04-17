@@ -12,6 +12,7 @@ function render(){
     let marzel = '../tictactoe/images/marzel1.png'
     let lyla = '../tictactoe/images/lyla1.png'
     let tie = '../tictactoe/images/lyla.jpg'
+    let marzel2 = '../tictactoe/images/marzel2.jpg'
     let x = 'X'
     let o = 'O'
     let playerOne = []
@@ -42,7 +43,7 @@ function render(){
             modal.appendChild(newModal)
             winner = 1;
             let frame = document.createElement('img')
-            frame.src = marzel
+            frame.src = marzel2
             frame.classList.add('rainbow')
             modal.appendChild(frame)
             let snake = document.createElement('div')
@@ -72,29 +73,36 @@ function render(){
             })
         }
         if(checker(playerTwo, win1) || checker(playerTwo, win2) || checker(playerTwo, win3) || checker(playerTwo, win4) || checker(playerTwo, win5) || checker(playerTwo, win6) || checker(playerTwo, win7) || checker(playerTwo, win8)){
-            
-            alert('player Two is the winner')
             winner = 2
             if (winner !== 0){
-                winner = 3
+                winner = 2
                 let newModal = document.createElement('div')
                 modal.appendChild(newModal)
-                winner = 1;
                 let frame = document.createElement('img')
                 frame.src = lyla
                 frame.classList.add('rainbow')
                 modal.appendChild(frame)
                 let snake = document.createElement('div')
                 snake.className = 'snake'
+                let frame1 = document.createElement('img')
+                frame1.src = lyla
+                snake.appendChild(frame1)
                 modal.appendChild(snake)
                 let snake1 = document.createElement('div')
                 snake1.className ='snake1'
-                snake1.style = 'animation-delay: 1.3s'
+                
+                let frame2 = document.createElement('img')
+                frame2.src = lyla
+                frame2.style = 'animation-delay: 1.3s'
+                snake1.appendChild(frame2)
                 modal1.appendChild(snake1)
                 let snake2 = document.createElement('div')
-                snake2.appendChild(frame)
                 snake2.className = 'snake2' 
-                snake2.style = 'animation-delay: 2.7s'  
+                 
+                let frame3 = document.createElement('img')
+                frame3.src = lyla
+                frame3.style = 'animation-delay: 2.7s' 
+                snake2.appendChild(frame3)
                 modal2.appendChild(snake2)
                 frame.addEventListener('click',function(event){
                     closeModal()
@@ -103,11 +111,11 @@ function render(){
             }      
         }
         if (newSet.length == 0){
+            
             if (winner !== 0){
                 winner = 3
                 let newModal = document.createElement('div')
                 modal.appendChild(newModal)
-                winner = 1;
                 let frame = document.createElement('img')
                 frame.src = tie
                 frame.classList.add('rainbow')

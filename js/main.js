@@ -53,12 +53,19 @@ function render(){
             modal.appendChild(snake)
             let snake1 = document.createElement('div')
             snake1.className ='snake1'
-            snake1.style = 'animation-delay: 1.3s'
-            snake1.appendChild(frame1)
+            
+            let frame2 = document.createElement('img')
+            frame2.src = marzel
+            frame2.style = 'animation-delay: 1.3s'
+            snake1.appendChild(frame2)
             modal1.appendChild(snake1)
             let snake2 = document.createElement('div')
             snake2.className = 'snake2' 
-            snake2.style = 'animation-delay: 2.7s'  
+             
+            let frame3 = document.createElement('img')
+            frame3.src = marzel
+            frame3.style = 'animation-delay: 2.7s' 
+            snake2.appendChild(frame3)
             modal2.appendChild(snake2)
             frame.addEventListener('click',function(event){
                 closeModal()
@@ -123,15 +130,9 @@ function render(){
             }
         }
     }
-    function sleep(milliseconds) { 
-        let timeStart = new Date().getTime(); 
-        while (true) { 
-            let elapsedTime = new Date().getTime() - timeStart; 
-            if (elapsedTime > milliseconds) { 
-                break; 
-            } 
-        } 
-    } 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     function oneTurn(box){
         console.log(box)
         console.log(!whosTurn)
@@ -143,7 +144,6 @@ function render(){
                     img.src = marzel
                     letter.appendChild(img)
                     clicked.appendChild(img)
-                    
                     console.log(img)
                     letter.textContent = x
                     clickedBoxes.push(box)
@@ -162,7 +162,6 @@ function render(){
         console.log(whosTurn.slice(-1)[0])
         
         if (winner === 0 && whosTurn.slice(-1)[0]=== 'player1'){
-            sleep(1000)
             let randomBox = newSet[Math.floor(Math.random()*newSet.length)];
             console.log(randomBox)
             clickedBoxes.push(randomBox)
@@ -170,17 +169,20 @@ function render(){
             let oponentClicked = document.querySelector(`#${randomBox}`)
             let opponentLetter = document.createElement('span')
             let imgLyla = document.createElement('img')
+            imgLyla.className ='ease'
             imgLyla.src = lyla
             oponentClicked.appendChild(imgLyla)
             whosTurn.push('player2')
             opponentLetter.textContent = o
+            checkForWin() 
             
         }    
     }
-    function displayLetter(){   
+    async function displayLetter(){   
         checkForWin()
+        await sleep(750)
         twoTurn() 
-        checkForWin()   
+          
     }
 
     let gameBox = document.querySelector(".body-game")

@@ -109,15 +109,15 @@
   }
  
 
-.snake, .snake1, .snake2  {
+.snake img, .snake1 img, .snake2 img{
 	position: absolute;
     z-index: 0;
     left: 25vw;
     bottom: 25vh;
 	background: #fd2eb3;
 	border-radius: 5px;
-    width: 0;
-    height: 0;
+    width: 10%;
+    height: 10%;
 	-webkit-box-shadow: 0px 0px 15px 15px red;
 	box-shadow: 0px 0px 15px 15px rgb(68, 59, 59);
 
@@ -175,35 +175,26 @@
 }
 
 @keyframes around {
- 0% {
-     position: aboslute;
-    left: 25vw;
-       top: 25vh;
-       width: 70px;
- }
- 25% {
-     position:absolute;
-    left: 75vw;
-    top: 25vh;
-    height: 70px;   
- }
- 50% {
-     position: absolute;
-    left: 75vw;
-       top: 75vh;
-       height: 70px;
- }
- 75% {
-     position: abosolute;
-    left: 25vw;
-    top: 75vh;
-    width: 70px;
- }
- 100% {
-    left: 25vw;
-       top: 25vh;
-       height: 70px;
- }
+    0% {
+        left: 0;
+        top: 0;
+      }
+      25% {
+        left: 90%;
+        top: 0;
+      }
+      50% {
+        left: 90%;
+        top: 90%;
+      }
+      75% {
+        left: 0;
+        top: 90%;
+      }
+      100% {
+        left: 0;
+        top: 0;
+      }
 }
 
 
@@ -233,3 +224,15 @@
    	opacity: 1;
  }
 }
+.ease{
+
+    /* This timing applies on the way OUT */
+    transition-timing-function: ease-out;
+  
+    /* Quick on the way out */
+    transition: 5s;
+  
+    /* Hide thing by pushing it outside by default */
+    transform: translateY(1000%);
+  
+  }

@@ -15,9 +15,9 @@ function render(){
     let o = 'O'
     let playerOne = []
     let playerTwo = []
-    let winner = null
-    let iframe = "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Friane.garcia%2Fvideos%2F10223063509595636%2F&show_text=0&width=476"
-    // <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Friane.garcia%2Fvideos%2F10223063509595636%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+    let winner = 0
+    let whosTurn = []
+    let newSet = []
     let modal = document.querySelector(".modal")
     let modal1 = document.querySelector(".modal")
     let modal2 = document.querySelector(".modal")
@@ -59,39 +59,59 @@ function render(){
                 closeModal()
             })
         }
-        if(checker(playerTwo, win1) || checker(playerTwo, win2) || checker(playerTwo, win3) || checker(playerOne, win4) || checker(playerTwo, win5) || checker(playerTwo, win6) || checker(playerTwo, win7) || checker(playerTwo, win8)){
+        if(checker(playerTwo, win1) || checker(playerTwo, win2) || checker(playerTwo, win3) || checker(playerTwo, win4) || checker(playerTwo, win5) || checker(playerTwo, win6) || checker(playerTwo, win7) || checker(playerTwo, win8)){
             
             alert('player Two is the winner')
             winner = 2
             location.reload();
             return false;       
         }
-    }
-    function displayLetter(box){
-        checkForWin()
-        
-        if (!clickedBoxes.includes(box)){
-            let clicked = document.querySelector(`#${box}`)
-            let letter = document.createElement('span')
-            let img = document.createElement('img')
-            img.src = marzel
-            letter.appendChild(img)
-            clicked.appendChild(img)
-            
-            console.log(img)
-            letter.textContent = x
-            clickedBoxes.push(box)
-            playerOne.push(box)
-            let newSet = boxes.filter(x => !clickedBoxes.includes(x));
-            console.log(newSet)
-            checkForWin()
-            if (newSet.length == 0){
-                if (winner !== null){
-                    alert('its a TIE')
-                    location.reload();
+        if (newSet.length == 0){
+            if (winner !== null){
+                winner = 3
+                alert('its a TIE')
+                location.reload();
 
-                }
             }
+        }
+    }
+    function sleep(milliseconds) { 
+        let timeStart = new Date().getTime(); 
+        while (true) { 
+            let elapsedTime = new Date().getTime() - timeStart; 
+            if (elapsedTime > milliseconds) { 
+                break; 
+            } 
+        } 
+    } 
+    function oneTurn(box){
+        console.log(box)
+        console.log(!whosTurn)
+        if (!clickedBoxes.includes(box)){
+             if(winner === 0 && (whosTurn[-1]=== 'player2' || !whosTurn === false)){
+                    let clicked = document.querySelector(`#${box}`)
+                    let letter = document.createElement('span')
+                    let img = document.createElement('img')
+                    img.src = marzel
+                    letter.appendChild(img)
+                    clicked.appendChild(img)
+                    
+                    console.log(img)
+                    letter.textContent = x
+                    clickedBoxes.push(box)
+                    playerOne.push(box)
+                    whosTurn.push('player1')
+                    newSet = boxes.filter(x => !clickedBoxes.includes(x));
+                    console.log(newSet)
+                    displayLetter()
+            }    
+        }
+    }
+
+    function twoTurn(){
+        console.log(whosTurn.slice(-1)[0])
+        sleep(5000)
+        if (winner === 0 && whosTurn.slice(-1)[0]=== 'player1'){
             let randomBox = newSet[Math.floor(Math.random()*newSet.length)];
             console.log(randomBox)
             clickedBoxes.push(randomBox)
@@ -101,23 +121,26 @@ function render(){
             let imgLyla = document.createElement('img')
             imgLyla.src = lyla
             oponentClicked.appendChild(imgLyla)
+            whosTurn.push('player2')
             opponentLetter.textContent = o
             
-            
-            
-
-        }
-       
+        }    
+    }
+    function displayLetter(){   
+        checkForWin()
+        twoTurn() 
+        checkForWin()   
     }
 
     let gameBox = document.querySelector(".body-game")
     for (let box of boxes){
+        newSet.push(box)
         let newBox = document.createElement('div')
         gameBox.appendChild(newBox)
         newBox.classList.add('box')
         newBox.id = box
         newBox.addEventListener('click',function(event){
-            displayLetter(box)
+            oneTurn(box)
 
         })
 

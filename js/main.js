@@ -11,6 +11,7 @@ function render(){
     }
     let marzel = '../tictactoe/images/marzel1.png'
     let lyla = '../tictactoe/images/lyla1.png'
+    let tie = '../tictactoe/images/lyla.jpg'
     let x = 'X'
     let o = 'O'
     let playerOne = []
@@ -63,14 +64,56 @@ function render(){
             
             alert('player Two is the winner')
             winner = 2
-            location.reload();
-            return false;       
+            if (winner !== 0){
+                winner = 3
+                let newModal = document.createElement('div')
+                modal.appendChild(newModal)
+                winner = 1;
+                let frame = document.createElement('img')
+                frame.src = tie
+                frame.classList.add('rainbow')
+                modal.appendChild(frame)
+                let snake = document.createElement('div')
+                snake.className = 'snake'
+                modal.appendChild(snake)
+                let snake1 = document.createElement('div')
+                snake1.className ='snake1'
+                snake1.style = 'animation-delay: 1.3s'
+                modal1.appendChild(snake1)
+                let snake2 = document.createElement('div')
+                snake2.className = 'snake2' 
+                snake2.style = 'animation-delay: 2.7s'  
+                modal2.appendChild(snake2)
+                frame.addEventListener('click',function(event){
+                    closeModal()
+                })
+
+            }      
         }
         if (newSet.length == 0){
-            if (winner !== null){
+            if (winner !== 0){
                 winner = 3
-                alert('its a TIE')
-                location.reload();
+                let newModal = document.createElement('div')
+                modal.appendChild(newModal)
+                winner = 1;
+                let frame = document.createElement('img')
+                frame.src = tie
+                frame.classList.add('rainbow')
+                modal.appendChild(frame)
+                let snake = document.createElement('div')
+                snake.className = 'snake'
+                modal.appendChild(snake)
+                let snake1 = document.createElement('div')
+                snake1.className ='snake1'
+                snake1.style = 'animation-delay: 1.3s'
+                modal1.appendChild(snake1)
+                let snake2 = document.createElement('div')
+                snake2.className = 'snake2' 
+                snake2.style = 'animation-delay: 2.7s'  
+                modal2.appendChild(snake2)
+                frame.addEventListener('click',function(event){
+                    closeModal()
+                })
 
             }
         }
@@ -104,14 +147,17 @@ function render(){
                     newSet = boxes.filter(x => !clickedBoxes.includes(x));
                     console.log(newSet)
                     displayLetter()
+                    
             }    
         }
+        
     }
 
     function twoTurn(){
         console.log(whosTurn.slice(-1)[0])
-        sleep(5000)
+        
         if (winner === 0 && whosTurn.slice(-1)[0]=== 'player1'){
+            sleep(1000)
             let randomBox = newSet[Math.floor(Math.random()*newSet.length)];
             console.log(randomBox)
             clickedBoxes.push(randomBox)

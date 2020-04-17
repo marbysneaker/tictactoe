@@ -112,7 +112,7 @@ function render(){
         }
         if (newSet.length == 0){
             
-            if (winner !== 0){
+            if (winner === 0){
                 winner = 3
                 let newModal = document.createElement('div')
                 modal.appendChild(newModal)

@@ -20,6 +20,11 @@ function render(){
     let winner = 0
     let whosTurn = []
     let newSet = []
+    let pick = false;
+    let playerOneChoice = undefined;
+    let playerTwoChoice = undefined;
+    let playerOneWinner = undefined;
+    let playerTwoWinner = undefined;
     let modal = document.querySelector(".modal")
     let modal1 = document.querySelector(".modal")
     let modal2 = document.querySelector(".modal")
@@ -48,20 +53,20 @@ function render(){
             modal.appendChild(newModal)
             winner = 1;
             let frame = document.createElement('img')
-            frame.src = marzel2
+            frame.src = playerOneWinner
             frame.classList.add('rainbow')
             modal.appendChild(frame)
             let snake = document.createElement('div')
             snake.className = 'snake'
             let frame1 = document.createElement('img')
-            frame1.src = marzel
+            frame1.src = playerOneChoice
             snake.appendChild(frame1)
             modal.appendChild(snake)
             let snake1 = document.createElement('div')
             snake1.className ='snake1'
             
             let frame2 = document.createElement('img')
-            frame2.src = marzel
+            frame2.src = playerOneChoice
             frame2.style = 'animation-delay: 1.3s'
             snake1.appendChild(frame2)
             modal1.appendChild(snake1)
@@ -69,7 +74,7 @@ function render(){
             snake2.className = 'snake2' 
              
             let frame3 = document.createElement('img')
-            frame3.src = marzel
+            frame3.src = playerOneChoice
             frame3.style = 'animation-delay: 2.7s' 
             snake2.appendChild(frame3)
             modal2.appendChild(snake2)
@@ -84,20 +89,20 @@ function render(){
                 let newModal = document.createElement('div')
                 modal.appendChild(newModal)
                 let frame = document.createElement('img')
-                frame.src = lyla
+                frame.src = playerTwoWinner
                 frame.classList.add('rainbow')
                 modal.appendChild(frame)
                 let snake = document.createElement('div')
                 snake.className = 'snake'
                 let frame1 = document.createElement('img')
-                frame1.src = lyla
+                frame1.src = playerTwoChoice
                 snake.appendChild(frame1)
                 modal.appendChild(snake)
                 let snake1 = document.createElement('div')
                 snake1.className ='snake1'
                 
                 let frame2 = document.createElement('img')
-                frame2.src = lyla
+                frame2.src = playerTwoChoice
                 frame2.style = 'animation-delay: 1.3s'
                 snake1.appendChild(frame2)
                 modal1.appendChild(snake1)
@@ -105,7 +110,7 @@ function render(){
                 snake2.className = 'snake2' 
                  
                 let frame3 = document.createElement('img')
-                frame3.src = lyla
+                frame3.src = playerTwoChoice
                 frame3.style = 'animation-delay: 2.7s' 
                 snake2.appendChild(frame3)
                 modal2.appendChild(snake2)
@@ -155,7 +160,7 @@ function render(){
                     let clicked = document.querySelector(`#${box}`)
                     let letter = document.createElement('span')
                     let img = document.createElement('img')
-                    img.src = marzel
+                    img.src = playerOneChoice
                     letter.appendChild(img)
                     clicked.appendChild(img)
                     console.log(img)
@@ -185,7 +190,7 @@ function render(){
             let opponentLetter = document.createElement('span')
             let imgLyla = document.createElement('img')
             imgLyla.className ='ease'
-            imgLyla.src = lyla
+            imgLyla.src = playerTwoChoice
             oponentClicked.appendChild(imgLyla)
             whosTurn.push('player2')
             opponentLetter.textContent = o
@@ -213,6 +218,52 @@ function render(){
         })
 
     }
+    function playerChoice(image){
+        console.log(image)
+        pick = true
+        console.log(pick)
+        document.querySelector('.choice').style.display='none';
+        if (image === marzel){
+            playerOneChoice = image
+            playerOneWinner = marzel2
+            playerTwoChoice = lyla
+            playerTwoWinner = lyla
+        }
+        else{
+            playerOneChoice = lyla
+            playerOneWinner = lyla
+            playerTwoChoice = marzel
+            playerTwoWinner = marzel2
+        }
+    }
+    let choice = document.querySelector('.choice')
+    if(pick === false){
+        let choiceBox = document.createElement('span')
+        choiceBox.textContent = 'Choose your character'
+        choice.appendChild(choiceBox)
+        let img1 = document.createElement('img')
+        img1.src = marzel
+        img1.className = 'choice-1'
+        choice.appendChild(img1)
+        img1.addEventListener('click',function(event){
+            playerChoice(marzel)
+        })
+        let img2 = document.createElement('img')
+        img2.src = lyla
+        img2.className = 'choice-2'
+        choice.appendChild(img2)
+        img2.addEventListener('click',function(event){
+            playerChoice(lyla)
+        })
+
+    }
+    // if (pick === true){
+
+    //     choice.textContent = ''
+    //     choice.removeChild(img1)
+    //     choice.removeChild(img2)
+    // }
+    
     function closeModal(){
         location.reload();
         return false; 

@@ -224,15 +224,3 @@
    	opacity: 1;
  }
 }
-.ease{
-
-    /* This timing applies on the way OUT */
-    transition-timing-function: ease-out;
-  
-    /* Quick on the way out */
-    transition: 5s;
-  
-    /* Hide thing by pushing it outside by default */
-    transform: translateY(1000%);
-  
-  }

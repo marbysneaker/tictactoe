@@ -23,6 +23,10 @@ function render(){
     let modal = document.querySelector(".modal")
     let modal1 = document.querySelector(".modal")
     let modal2 = document.querySelector(".modal")
+    let audio1 =document.getElementById('winning-audio')
+    let sound = document.getElementById("audio");
+    let sound1 = document.getElementById("audio1");
+                
     function checkForWin(){
         
         console.log(playerOne)
@@ -39,6 +43,7 @@ function render(){
 
         if(checker(playerOne, win1) || checker(playerOne, win2) || checker(playerOne, win3) || checker(playerOne, win4) || checker(playerOne, win5) || checker(playerOne, win6) || checker(playerOne, win7) || checker(playerOne, win8)){
             
+            audio1.play()
             let newModal = document.createElement('div')
             modal.appendChild(newModal)
             winner = 1;
@@ -146,6 +151,7 @@ function render(){
         console.log(!whosTurn)
         if (!clickedBoxes.includes(box)){
              if(winner === 0 && (whosTurn[-1]=== 'player2' || !whosTurn === false)){
+                    sound1.play()
                     let clicked = document.querySelector(`#${box}`)
                     let letter = document.createElement('span')
                     let img = document.createElement('img')
@@ -170,6 +176,7 @@ function render(){
         console.log(whosTurn.slice(-1)[0])
         
         if (winner === 0 && whosTurn.slice(-1)[0]=== 'player1'){
+            sound.play()
             let randomBox = newSet[Math.floor(Math.random()*newSet.length)];
             console.log(randomBox)
             clickedBoxes.push(randomBox)

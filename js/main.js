@@ -10,9 +10,10 @@ function render(){
         console.log(number)
     }
     let marzel = '../tictactoe/images/marzel1.png'
-    let lyla = '../tictactoe/images/lyla1.png'
-    let tie = '../tictactoe/images/lyla.jpg'
+    let lyla = '../tictactoe/images/brieBig.jpg'
+    let tie = "../tictactoe/images/brieNmarzel.jpg"
     let marzel2 = '../tictactoe/images/marzel2.jpg'
+    
     let x = 'X'
     let o = 'O'
     let playerOne = []

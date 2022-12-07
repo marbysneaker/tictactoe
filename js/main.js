@@ -10,10 +10,10 @@ function render(){
         console.log(number)
     }
     let marzel = '../tictactoe/images/marzel1.png'
-    let lyla = '../tictactoe/images/brieBig.jpg'
-    let tie = "../tictactoe/images/brieNmarzel.jpg"
+    let lyla = '../tictactoe/images/lyla1.png'
+    let tie = '../tictactoe/images/lyla.jpg'
     let marzel2 = '../tictactoe/images/marzel2.jpg'
-    
+    let brie ='../tictactoe/images/brieWin.jpg'
     let x = 'X'
     let o = 'O'
     let playerOne = []
@@ -228,11 +228,11 @@ function render(){
             playerOneChoice = image
             playerOneWinner = marzel2
             playerTwoChoice = lyla
-            playerTwoWinner = lyla
+            playerTwoWinner = brie
         }
         else{
             playerOneChoice = lyla
-            playerOneWinner = lyla
+            playerOneWinner = brie
             playerTwoChoice = marzel
             playerTwoWinner = marzel2
         }

@@ -10,7 +10,7 @@ function render(){
         console.log(number)
     }
     let marzel = '../tictactoe/images/marzel1.png'
-    let lyla = '../tictactoe/images/brieBig.png'
+    let lyla = '../tictactoe/images/brieBig.jpg'
     let tie = '../tictactoe/images/brieNmarzel.jpg'
     let marzel2 = '../tictactoe/images/marzel2.jpg'
     let brie ='../tictactoe/images/brieWin.jpg'
